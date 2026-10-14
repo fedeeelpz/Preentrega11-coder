@@ -30,8 +30,8 @@ Blog desarrollado con Django, con sistema de posts (CRUD completo), imágenes as
 1. Cloná el repositorio
 
 ```
-git clone https://github.com/fedeelpz/Preentrega10-coder
-cd Preentrega10-coder
+git clone https://github.com/fedeelpz/Preentrega11-coder
+cd Preentrega11-coder
 ```
 
 2. Creá y activá un entorno virtual
