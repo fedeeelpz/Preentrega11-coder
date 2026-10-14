@@ -12,9 +12,25 @@
     <header>
         <nav>
             <ul>
+                <!-- Enlaces públicos siempre visibles -->
                 <li><a href="{% url 'inicio' %}">Inicio</a></li>
-                <li><a href="{% url 'acerca' %}">Acerca de</a></li>
                 <li><a href="{% url 'lista_posts' %}">Posts</a></li>
+                <li><a href="{% url 'acerca' %}">Acerca de mí</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><span>Hola, {{ user.username }}</span></li>
+                    <li><a href="{% url 'perfil' %}">Mi perfil</a></li>
+                    <li><a href="{% url 'crear_post' %}">Crear post</a></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit">Cerrar sesión</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                    <li><a href="{% url 'registro' %}">Registrarse</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

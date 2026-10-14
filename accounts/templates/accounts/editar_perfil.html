@@ -1,0 +1,23 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h2>Editar Perfil</h2>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" style="padding: 8px 16px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Guardar cambios
+        </button>
+        
+        <a href="{% url 'perfil' %}" style="margin-left: 10px; text-decoration: none; color: #6c757d;">
+            Cancelar
+        </a>
+    </form>
+</div>
+{% endblock %}

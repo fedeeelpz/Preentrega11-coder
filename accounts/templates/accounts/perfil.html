@@ -1,0 +1,31 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 30px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h2>Perfil de Usuario</h2>
+    <hr>
+    <p><strong>Usuario:</strong> {{ request.user.username }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    
+    {% if perfil.avatar %}
+        <div style="margin: 15px 0;">
+            <img src="{{ perfil.avatar.url }}" alt="Avatar" width="120" style="border-radius: 50%; object-fit: cover;">
+        </div>
+    {% else %}
+        <p><em>No tenés un avatar cargado.</em></p>
+    {% endif %}
+
+    <p><strong>Biografía:</strong> {{ perfil.biografia|default:"No especificada" }}</p>
+    <p><strong>Sitio Web:</strong> 
+        {% if perfil.enlace_web %}
+            <a href="{{ perfil.enlace_web }}" target="_blank">{{ perfil.enlace_web }}</a>
+        {% else %}
+            No especificado
+        {% endif %}
+    </p>
+
+    <div style="margin-top: 20px;">
+        <a href="{% url 'editar_perfil' %}" style="padding: 8px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Editar Perfil</a>
+    </div>
+</div>
+{% endblock %}
